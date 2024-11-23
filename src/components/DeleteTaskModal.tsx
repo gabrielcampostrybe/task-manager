@@ -2,6 +2,7 @@
 import React from "react";
 
 interface DeleteTaskModalProps {
+  taskName: string;
   onDelete: () => void;
   onClose: () => void;
 }
