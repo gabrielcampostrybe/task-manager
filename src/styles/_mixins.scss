@@ -1,0 +1,45 @@
+@mixin flex($align, $space-align) {
+  display: flex;
+  align-items: $align;
+  justify-content: $space-align;
+}
+
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin cancelBtn {
+  width: 49%;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  background: #e7eefb;
+  cursor: pointer;
+}
+
+@mixin modal {
+  background: #121212;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 411px;
+}
+
+@mixin modalBtn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+@mixin confirmBtn($background) {
+  width: 49%;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  background: $background;
+  cursor: pointer;
+  color: white;
+}

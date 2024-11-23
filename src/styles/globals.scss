@@ -1,0 +1,203 @@
+@import "mixins";
+
+body {
+  font-family: Arial, sans-serif;
+  background: #121212;
+  color: #c7c7c7;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include flex(center, center);
+  backdrop-filter: blur(1px);
+  .new-task-modal {
+    @include modal;
+    .modalTitle {
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0 0 20px 0;
+    }
+    .taskTitle {
+      @include flex(none, none);
+      margin: 5px 0;
+    }
+    .taskName {
+      border: 1px solid #d7dde9;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .modalBtn {
+      @include modalBtn;
+      .addBtn {
+        width: 49%;
+        padding: 20px;
+        border-radius: 10px;
+        border: none;
+        background: linear-gradient(90deg, #0796d3, #53c0f0);
+        cursor: pointer;
+        color: white;
+      }
+      .cancelBtn {
+        @include cancelBtn;
+      }
+    }
+  }
+  .delete-task-modal {
+    @include modal;
+    .modalBtn {
+      @include modalBtn;
+      .deleteBtn {
+        @include confirmBtn(red);
+      }
+      .cancelBtn {
+        @include cancelBtn;
+      }
+    }
+  }
+}
+
+header {
+  padding: 0 30px 24px 30px;
+
+  .header {
+    @include flex(center, space-between);
+    padding: 0px 0px;
+    background-color: #121212;
+    border-bottom: 1px solid #d7dde9;
+
+    .logo {
+      @include flex(center, flex-start);
+      width: 30%;
+      img {
+        height: 33px;
+        width: auto;
+      }
+
+      .logoTitle {
+        font-size: 24px;
+      color: #c7c7c7;
+        letter-spacing: -0.05em;
+        margin-left: 10px;
+        font-weight: 800;
+      }
+    }
+
+    .welcome {
+      @include flex(center, center);
+      width: 30%;
+      h1 {
+        font-size: 24px;
+        letter-spacing: -0.02em;
+        font-weight: 500;
+      }
+    }
+
+    .time {
+      @include flex(center, flex-end);
+      width: 30%;
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.tasks-container {
+  max-width: 450px;
+  margin: 0 auto;
+  .tasks {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eaecf0;
+  }
+  .tasks-title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+  .task-item {
+    @include flex(center, space-between);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #d7dde9;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #1f1f1f;
+      cursor: pointer;
+      border: 1px solid #f7f9fd;
+    }
+    &.completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+    .task-info {
+      display: flex;
+      align-items: center;
+    }
+    .custom-checkbox {
+      position: relative;
+      @include flex(center, none);
+      input[type="checkbox"] {
+        appearance: none;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #888;
+        border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        &:checked {
+          background-color: #a0dcf6;
+          border-color: #0796d3;
+        }
+      }
+
+      .check-icon {
+        position: absolute;
+        top: 7px;
+        left: 9px;
+        width: 11px;
+        height: 10px;
+        @include flex(center, center);
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .trash-icon {
+      @include flex(center, none);
+      filter: invert(96%) sepia(0%) saturate(1379%) hue-rotate(141deg) brightness(92%) contrast(73%);
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .add-task-button {
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #0796d3, #53c0f0);
+    cursor: pointer;
+    color: white;
+  }
+}
+
+@include mobile {
+}
