@@ -11,10 +11,9 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model User {
+model Tasks {
   id        Int      @id @default(autoincrement())
   name      String
-  email     String   @unique
-  image     String
+  done      Boolean  @default(false)
   createdAt DateTime @default(now())
 }
