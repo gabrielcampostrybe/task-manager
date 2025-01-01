@@ -10,7 +10,6 @@ const Header: React.FC = () => {
       <div className="header">
         <div className="logo">
           <Image src={logo} alt="logo" />
-          <h1 className="logoTitle">FocalPoint</h1>
         </div>
         <div className="welcome">
           <h1>Bem-vindo de volta!</h1>
