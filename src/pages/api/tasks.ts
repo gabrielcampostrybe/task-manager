@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (method === 'GET') {
     try {
-      const tasks = await prisma.tasks.findMany({
+      const tasks = await prisma.task.findMany({
         select: {
           id: true,
           name: true,
@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } else if (method === 'POST') {
     try {
       const { taskName } = req.body;
-      const task = await prisma.tasks.create({
+      const task = await prisma.task.create({
         data: {
           name: taskName,
         },
@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } else if (method === 'DELETE') {
     const { taskId } = req.body;
     try {
-      await prisma.tasks.delete({
+      await prisma.task.delete({
         where: { id: taskId },
       });
       res.status(200).json({ message: 'Task deleted successfully' });
@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { taskId, done } = req.body;
 
     try {
-      const updatedTask = await prisma.tasks.update({
+      const updatedTask = await prisma.task.update({
         where: { id: taskId },
         data: { done },
       });

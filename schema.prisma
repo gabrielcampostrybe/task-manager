@@ -11,7 +11,7 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Tasks {
+model Task {
   id        Int      @id @default(autoincrement())
   name      String
   done      Boolean  @default(false)
